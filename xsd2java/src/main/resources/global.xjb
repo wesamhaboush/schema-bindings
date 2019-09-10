@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings
+        jaxb:version="2.1"
+        xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+        xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb/bindingschema_2_0.xsd">
+
+    <jaxb:globalBindings>
+        <jaxb:javaType name="java.time.ZonedDateTime" xmlType="xs:dateTime"
+                       parseMethod="java.time.ZonedDateTime.parse"
+                       printMethod="java.time.format.DateTimeFormatter.ISO_DATE_TIME.format"/>
+        <jaxb:javaType name="java.time.LocalDate" xmlType="xs:date"
+                       parseMethod="java.time.LocalDate.parse"
+                       printMethod="java.time.format.DateTimeFormatter.ISO_LOCAL_DATE.format"/>
+        <jaxb:serializable/>
+        <xjc:simple/>
+    </jaxb:globalBindings>
+</jaxb:bindings>
