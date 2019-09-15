@@ -1,0 +1,81 @@
+{
+    "$id": "https://codebreeze.net/jsonschema2java/purchase-order.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "A representation of a purchase order",
+    "type": "object",
+    "required": ["shipTo", "billTo", "items", "orderDate"],
+    "properties": {
+        "shipTo": {
+            "$ref": "#/definitions/us-address"
+        },
+        "billTo": {
+            "$ref": "#/definitions/us-address"
+        },
+        "comment": {
+            "type": "object"
+        },
+        "items": {
+            "type": "array",
+            "items": { "$ref":  "#/definitions/item" }
+        },
+        "orderDate": {
+            "type": "string",
+            "format": "date-time"
+        }
+    },
+    "definitions": {
+        "us-address": {
+            "type": "object",
+            "required": ["name", "street", "city", "state", "zip", "country"],
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "street": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "zip": {
+                    "type": "integer"
+                },
+                "country": {
+                    "type": "string"
+                }
+            }
+        },
+        "item" : {
+            "type": "object",
+            "required": ["productName", "quantity", "shipDate", "us-price", "expectedDeliveryDate", "partNum"],
+            "properties": {
+                "productName": {
+                    "type": "string"
+                },
+                "quantity": {
+                    "type": "integer"
+                },
+                "us-price": {
+                    "type": "number"
+                },
+                "comment": {
+                    "type": "string"
+                },
+                "shipDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "expectedDeliveryDate": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "partNum": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
