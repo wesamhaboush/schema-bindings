@@ -1,0 +1,39 @@
+syntax = "proto3";
+option java_package = "net.codebreeze.schema.binding";
+option java_multiple_files = true;
+
+import "google/protobuf/timestamp.proto";
+
+
+message PurchaseOrder {
+    USAddress shipTo = 1;
+    USAddress billTo = 2;
+    string comment = 3;
+    repeated Item items = 4;
+    Date orderDate = 5;
+}
+
+message USAddress {
+    string name = 1;
+    string street = 2;
+    string city = 3;
+    string stage = 4;
+    int32 zip = 5;
+    string country = 6; // always US
+}
+
+message Item {
+    string productName = 1;
+    uint32 quantity = 2;
+    double usPrice = 3;
+    string comment = 4;
+    google.protobuf.Timestamp shipDate = 5;
+    Date expectedDeliveryDate = 6;
+    string partNum = 7;
+}
+
+message Date {
+    uint32 year = 1;
+    uint32 month = 2;
+    uint32 day = 3;
+}
